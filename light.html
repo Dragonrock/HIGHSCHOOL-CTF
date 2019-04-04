@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html class="gr__fiddle_jshell_net"><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script type="text/javascript" src="light_files/dummy.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="light_files/result-light.css">
+
+
+  <style id="compiled-css" type="text/css">
+      
+  </style>
+
+
+  <!-- TODO: Missing CoffeeScript 2 -->
+
+  <script type="text/javascript">
+
+
+    window.onload=function(){
+      
+getID = function(x){
+  return document.getElementById(x);
+}
+
+submitData = function (){
+    
+    var player = getID("player_name").value;
+    var score = getID("player_score").value;
+
+    var playerCell = document.createElement("TD");
+    var playerCellText = document.createTextNode(player);
+    playerCell.appendChild(playerCellText);
+    
+    var scoreCell = document.createElement("TD");
+    var scoreCellText = document.createTextNode(score);
+    scoreCell.appendChild(scoreCellText);
+    
+    var row = document.createElement("TR");
+    row.appendChild(playerCell);
+    row.appendChild(scoreCell);
+
+    getID("player").appendChild(row);
+};
+
+    }
+
+</script><style></style>
+
+</head>
+<body data-gr-c-s-loaded="true">
+    <table style="width:100%" id="player">
+    <tbody><tr>
+        <td>Player</td>
+        <td>Score</td>
+    </tr>
+</tbody></table>
+
+<form>
+    Player Name: <input name="FirstName" id="player_name" type="text"><br>
+    Player Score: <input name="LastName" id="player_score" type="text"><br>
+    <input onclick="submitData()" value="Submit" type="button">
+</form>
+
+
+  
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "uLwd7jyr"
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+    window.name = "result"
+  </script>
+
+
+</body></html>

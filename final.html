@@ -71,99 +71,73 @@
 					width: 30em;
 				}
 </style>
+<script type="text/javascript">
 
-	<script type="text/javascript">
+
+    window.onload=function(){
+      
+getID = function(x){
+  return document.getElementById(x);
+  localStorage.getItem("playerCell").appendChild(localStorage.getItem("playerCellText");
+  localStorage.getItem("scoreCell").appendChild(localStorage.getItem("scoreCellText"))
+  localStorage.getItem("row").appendChild(localStorage.getItem("playerCell"))
+  localStorage.getItem("row").appendChild(localStorage.getItem("scoreCell"))
+  localStorage.getItem('player').appendChildI(localStorage.getItem("row"))
+
+}
+
+submitData = function (){
+    
+    var player = getID("player_name").value;
+    var score = getID("player_score").value;
+    localStorage.setItem("player", $(player).val());
+    localStorage.setItem("score", $(score).val());
+
+    var playerCell = document.createElement("TD");
+    var playerCellText = document.createTextNode(player);
+    localStorage.setItem("playerCell", $([playerCell]).val());
+    localStorage.setItem("playerCellText", $(playerCellText).val());
+
+    playerCell.appendChild(playerCellText);
+    
+    var scoreCell = document.createElement("TD");
+    var scoreCellText = document.createTextNode(score);
+    localStorage.setItem("scoreCell", $(scoreCellText).val());
+
+    scoreCell.appendChild(scoreCellText);
+    
+    var row = document.createElement("TR");
+    localStorage.setItem("row", $(row).val());
+
+    row.appendChild(playerCell);
+    row.appendChild(scoreCell);
+
+    getID("player").appendChild(row);
+    var body = document.getElementsByTagName("body");
+	document.getElementById("body").innerHTML = body;
+};
+
+    }
+
+</script>
 	
-
-			function HighScores() {
-				if(typeof(Storage)!=="undefined"){
-					var scores = false;
-					if(localStorage["high-scores"]) {
-						high_scores.style.display = "block";
-						high_scores.innerHTML = '';
-						scores = JSON.parse(localStorage["high-scores"]);
-						scores = scores.sort(function(a,b){return parseInt(b)-parseInt(a)});
-
-						for(var i = 0; i < 10; i++){
-							var s = scores[i];						
-							var fragment = document.createElement('li');
-							fragment.innerHTML = (typeof(s) != "undefined" ? s : "" );
-							high_scores.appendChild(fragment);
-						}
-					}
-				} else {
-					high_scores.style.display = "none";
-				}
-			}
-			
-			function UpdateScore() {
-				var value = parseInt(target.getAttribute('name'));
-					var current = parseInt( score.innerHTML );
-					score.innerHTML = current + value;
-				if(typeof(Storage)!=="undefined"){
-					var current = parseInt(score.innerHTML);
-					var scores = false;
-					if(localStorage["high-scores"]) {
-			
-						scores = JSON.parse(localStorage["high-scores"]);
-						scores = scores.sort(function(a,b){return parseInt(b)-parseInt(a)});
-						
-						for(var i = 0; i < 10; i++){
-							var s = parseInt(scores[i]);
-							
-							var val = (!isNaN(s) ? s : 0 );
-							if(current > val)
-							{
-								val = current;
-								scores.splice(i, 0, parseInt(current));
-								break;
-							}
-						}
-						
-						scores.length = 10;								
-						localStorage["high-scores"] = JSON.stringify(scores);
-
-					} else {						
-						var scores = new Array();
-						scores[0] = current;
-						localStorage["high-scores"] = JSON.stringify(scores);
-					}
-					
-					HighScores();
-				} 
-			}
-	</script>
-
 </head>
 <body>
-<h1></center>Συγχαρητήρια πέρασες όλες τις δοκιμασίες.</center></h1>
+<h1></center>Πέρασες όλες τις δοκιμασίες.</center></h1>
 <p> Βάλε το όνομα σου (ή της ομάδας σου) στον παρακάτω πίνακα.</p>
-<form id="frm1" action="/action_page.php">
-  Όνομα<input type="text" id="name" name="lname"><br>
-  Χρόνος<input type="text" id="time" name="ltime"><br><br>
-  <input type="button" onclick="updateScore()" value="Submit">
+
+<table style="width:100%" id="player">
+    <tbody><tr>
+        <td>Player</td>
+        <td>Score</td>
+    </tr>
+</tbody></table>
+
+<form>
+    Player Name: <input name="FirstName" id="player_name" type="text"><br>
+    Player Score: <input name="LastName" id="player_score" type="text"><br>
+    <input onclick="submitData()" value="Submit" type="button">
 </form>
-<TABLE>
-	<tr>
-	<th>Όνομα</th>
-	<th>Χρόνος</th>
-	</tr>
-	<tr>
-	<td>
-	<ol class="high-scores">
-			</ol></td>
-	<td>
-	<ul id="myUl" style="list-style-type:none;">
-	<li id="1"></li>
-	<li id="2"></li>
-	<li id="3"></li>
-	<li id="4"></li>
-	<li id="5"></li>
-	<li id="6"></li>
-	<li id="7"></li>
-	<li id="8"></li>
-	<li id="9"></li>
-	<li id="10"></li>	
-</ul></td></tr></TABLE>
+
 </body>
 </html>

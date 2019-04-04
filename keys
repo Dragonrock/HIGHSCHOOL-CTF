@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WIZARD</title>
+		<!-- ελληνικά--> <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<!-- css -->
+<style type="text/css">
+		
+		html {
+  			font-size: calc(0.6em + 1vw);
+				}
+
+		.panel{
+			font-size: 1rem;
+			border-radius: 0.3em;
+  			overflow: hidden;
+		}
+
+		body{
+			background-image: url(over.png);
+			background-size: 66em 35em;
+     		margin: 0;
+ 			padding: 0;
+			}
+		
+		.panel-heading{
+			padding:0,6em 1.2em;
+			color: white;
+			text-shadow:
+   			-1px -1px 0 #000,
+    		1px -1px 0 #000,
+    		-1px 1px 0 #000,
+    		1px 1px 0 #000;  
+		}
+			.joke{
+			color: white;
+			font-size: 1.1em;
+			position: absolute;
+		}
+		.joke1{
+			color: red;
+			font-size: 1.5em;
+			position: absolute;
+		}
+		.password{
+			position: absolute;
+			top: 15em;
+		}
+		</style>
+		
+<body>
+<h1 class="joke">Συγχαρητήρια, με την βοήθεια σου καταφέραμε να βρούμε την τοποθεσία του οργανισμού LulSec.<br />
+Ορίστε το τέταρτο και τελευταίο κλειδί σου <font color="yellow">key{C}</font></h1>
+<p class="joke1"><br /><br /><br /> Γράψε την λέξη που συμπληρώνουν τα κλειδιά σου.</p>
+
+<form class="password">
+    <label for="pswd"><font color="red">KEY-WORD</font></label>
+    <input type="password" id="pswd">
+    <input type="button" value="Submit" onclick="checkPswd();" />
+</form><script type="text/javascript">
+    function checkPswd() {
+        var confirmPassword = "admin";
+        var password = document.getElementById("pswd").value;
+        if (password == confirmPassword) {
+             window.location="welcome.html";
+        }
+        else{
+            alert("Passwords do not match.");
+        }
+    }
+</script>
+<script type="text/javascript">
+    function checkPswd() {
+        var confirmPassword = "MAGIC";
+        var password = document.getElementById("pswd").value;
+        if (password == confirmPassword) {
+             window.location="final.html";
+        }
+        else{
+            alert("Passwords do not match.");
+        }
+    }
+</script>
+</body>
+</html>
